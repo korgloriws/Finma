@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Finma - Sistema de Gestão Financeira e Investimentos
 
 ## 📋 Descrição
@@ -253,3 +254,6 @@ pip install -r requirements.txt  # se houver
 ---
 
 **Desenvolvido com ❤️ usando Python, Dash e Flask** 
+=======
+# Finma
+>>>>>>> e1972aada9257f0d7851fd4a285752815007b20b
