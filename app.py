@@ -22,9 +22,20 @@ import pages.carteira as carteira_mod
 pio.templates.default = "simple_white"
 
 # Inicializar dados apenas se não estiver em ambiente de produção
-if not os.environ.get('RAILWAY_ENVIRONMENT'):
-    carteira_mod.atualizar_precos_carteira()
-    carteira_mod.salvar_historico()
+try:
+    if not os.environ.get('RAILWAY_ENVIRONMENT'):
+        print("Inicializando dados em ambiente de desenvolvimento...")
+        try:
+            carteira_mod.atualizar_precos_carteira()
+        except Exception as e:
+            print(f"Erro ao atualizar preços da carteira: {e}")
+        
+        try:
+            carteira_mod.salvar_historico()
+        except Exception as e:
+            print(f"Erro ao salvar histórico: {e}")
+except Exception as e:
+    print(f"Erro geral na inicialização: {e}")
 
 
 @app.server.route("/start_load", methods=["POST"])
@@ -130,4 +141,6 @@ assistente_ia.registrar_callbacks(app)
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
-    app.run_server(debug=False, port=port, host='0.0.0.0')
+    debug = os.environ.get('DEBUG', 'False').lower() == 'true'
+    print(f"Iniciando servidor na porta {port} com debug={debug}")
+    app.run_server(debug=debug, port=port, host='0.0.0.0')
