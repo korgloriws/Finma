@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Finma - Sistema de Gestão Financeira e Investimentos
 
 ## 📋 Descrição
@@ -52,8 +51,8 @@ O **Finma** é um sistema completo de gestão financeira e análise de investime
 
 ### 1. Clone o Repositório
 ```bash
-git clone <url-do-repositorio>
-cd finma_2.8_Copia
+git clone https://github.com/korgloriws/Finma.git
+cd Finma
 ```
 
 ### 2. Crie um Ambiente Virtual
@@ -126,7 +125,7 @@ Abra seu navegador e acesse: `http://localhost:5000`
 ## 📁 Estrutura do Projeto
 
 ```
-finma_2.8_Copia/
+Finma/
 ├── app.py                 # Aplicação principal
 ├── models.py              # Modelos de dados e lógica de negócio
 ├── complete_b3_logos_mapping.py  # Mapeamento de logos da B3
@@ -199,61 +198,34 @@ source venv/bin/activate  # Linux/Mac
 
 ### Erro no Modelo de IA
 ```bash
-# Reinstale o llama-cpp-python
-pip uninstall llama-cpp-python
-pip install llama_cpp_python-0.2.24-cp311-cp311-win_amd64.whl
+# Verifique se o modelo foi baixado corretamente
+ls modelos/mistral-7b-instruct-v0.1.Q4_K_M.gguf
+
+# Se não existir, execute novamente
+python modelos/baixar_modelo.py
 ```
 
 ### Problemas de Performance
 - Feche outras aplicações para liberar RAM
-- O modelo de IA requer pelo menos 4GB de RAM disponível
-
-### Erro de Conexão com Yahoo Finance
-- Verifique sua conexão com a internet
-- O sistema usa yfinance para obter dados de mercado
-
-## 🔒 Segurança
-
-- O sistema utiliza bcrypt para criptografia de senhas
-- Dados são armazenados localmente em bancos SQLite
-- Não há transmissão de dados financeiros para servidores externos
-
-## 📊 Dados Utilizados
-
-- **Yahoo Finance**: Dados de mercado em tempo real
-- **B3**: Lista de ativos negociados
-- **Mistral 7B**: Modelo de IA para análises
+- Use o modo escuro para economizar bateria
+- Desative o assistente de IA se não estiver usando
 
 ## 🤝 Contribuição
 
-Para contribuir com o projeto:
-
-1. Faça um fork do repositório
-2. Crie uma branch para sua feature
-3. Commit suas mudanças
-4. Abra um Pull Request
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
 
 ## 📄 Licença
 
-Este projeto está sob licença MIT. Veja o arquivo LICENSE para mais detalhes.
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 
 ## 📞 Suporte
 
-Para suporte técnico ou dúvidas:
-- Abra uma issue no repositório
-- Consulte a documentação das bibliotecas utilizadas
-
-## 🔄 Atualizações
-
-Para atualizar o sistema:
-```bash
-git pull origin main
-pip install -r requirements.txt  # se houver
-```
+Para suporte, abra uma issue no GitHub ou entre em contato através do email: [seu-email@exemplo.com]
 
 ---
 
-**Desenvolvido com ❤️ usando Python, Dash e Flask** 
-=======
-# Finma
->>>>>>> e1972aada9257f0d7851fd4a285752815007b20b
+**Desenvolvido com ❤️ para facilitar a gestão financeira pessoal e investimentos.**

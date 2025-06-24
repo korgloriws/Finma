@@ -976,22 +976,14 @@ COMPLETE_B3_LOGOS_MAPPING = {
 
 
 def get_logo_url(ticker):
-    """
-    Retorna a URL do logo para um ticker B3 específico.
-    
-    Args:
-        ticker (str): Ticker no formato 'XXXX3.sa' ou 'XXXX4.sa' (case-insensitive)
-    
-    Returns:
-        str: URL do logo ou None se não encontrado
-    """
+   
     if not ticker:
         return None
     
-    # Normaliza o ticker para busca case-insensitive
+
     ticker_normalized = ticker.lower()
     
-    # Busca no mapeamento (todas as chaves já estão em lowercase)
+
     for key, url in COMPLETE_B3_LOGOS_MAPPING.items():
         if key.lower() == ticker_normalized:
             return url
@@ -999,16 +991,7 @@ def get_logo_url(ticker):
     return None
 
 def add_logo_column_to_data(data, ticker_column='ticker'):
-    """
-    Adiciona uma coluna de logo aos dados da tabela.
-    
-    Args:
-        data (list): Lista de dicionários com os dados da tabela
-        ticker_column (str): Nome da coluna que contém o ticker
-    
-    Returns:
-        list: Dados com a coluna de logo adicionada
-    """
+
     if not data:
         return data
     
@@ -1017,30 +1000,19 @@ def add_logo_column_to_data(data, ticker_column='ticker'):
         logo_url = get_logo_url(ticker)
         
         if logo_url:
-            # Logo + Ticker na mesma coluna, logo maior
+
             row['ticker'] = f'<div style="display: flex; align-items: center; gap: 8px;"><img src="{logo_url}" alt="{ticker}" style="width: 50px; height: 50px; border-radius: 8px; object-fit: contain; border: 1px solid #e0e0e0; background: white; padding: 3px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"><span style="font-weight: bold; font-size: 14px;">{ticker}</span></div>'
         else:
-            # Placeholder + Ticker na mesma coluna
+
             ticker_short = ticker.replace('.SA', '').replace('.sa', '')[:4]
             row['ticker'] = f'<div style="display: flex; align-items: center; gap: 8px;"><div style="width: 50px; height: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">{ticker_short}</div><span style="font-weight: bold; font-size: 14px;">{ticker}</span></div>'
     
     return data
 
 def get_table_columns_with_logo(base_columns):
-    """
-    Retorna as colunas da tabela sem adicionar coluna de logo separada.
-    A logo será exibida junto com o ticker na coluna original.
-    
-    Args:
-        base_columns (list): Lista de colunas originais da tabela
-    
-    Returns:
-        list: Lista de colunas (sem coluna de logo separada)
-    """
+
     return base_columns
 
 def get_total_tickers():
-    """
-    Retorna o total de tickers mapeados
-    """
+   
     return len(COMPLETE_B3_LOGOS_MAPPING)
