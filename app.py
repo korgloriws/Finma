@@ -1,5 +1,6 @@
 import dash
 import dash_bootstrap_components as dbc
+import os
 
 app = dash.Dash(
     __name__,
@@ -20,8 +21,10 @@ import pages.carteira as carteira_mod
 
 pio.templates.default = "simple_white"
 
-carteira_mod.atualizar_precos_carteira()
-carteira_mod.salvar_historico()
+# Inicializar dados apenas se não estiver em ambiente de produção
+if not os.environ.get('RAILWAY_ENVIRONMENT'):
+    carteira_mod.atualizar_precos_carteira()
+    carteira_mod.salvar_historico()
 
 
 @app.server.route("/start_load", methods=["POST"])
@@ -126,4 +129,5 @@ controle.registrar_callbacks(app)
 assistente_ia.registrar_callbacks(app)
 
 if __name__ == "__main__":
-    app.run_server(debug=False, port=5000, host='0.0.0.0')
+    port = int(os.environ.get('PORT', 5000))
+    app.run_server(debug=False, port=port, host='0.0.0.0')
