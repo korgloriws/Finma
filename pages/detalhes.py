@@ -6,7 +6,7 @@ import plotly.express as px
 import yfinance as yf
 from datetime import datetime, timedelta
 import pandas as pd
-import dash_table
+from dash import dash_table
 from complete_b3_logos_mapping import add_logo_column_to_data, get_logo_url
 
 
